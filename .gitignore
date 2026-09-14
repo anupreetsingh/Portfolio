@@ -43,3 +43,5 @@ next-env.d.ts
 /AGENTS.md
 /CLAUDE.md
 /PLAN.md
+# build artifacts
+/src/data/projects.generated.json

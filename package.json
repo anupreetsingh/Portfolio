@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "fetch:projects": "node scripts/fetch-projects.mjs",
+    "predev": "npm run fetch:projects",
     "dev": "next dev",
+    "prebuild": "npm run fetch:projects",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"

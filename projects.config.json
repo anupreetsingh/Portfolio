@@ -1,0 +1,56 @@
+{
+  "owner": "anupreetsingh",
+  "projects": [
+    {
+      "repo": "Bloodborne-TAG",
+      "displayName": "Bloodborne: Text Adventure",
+      "tagline": "An LLM parses your free-text into one of a fixed command set; a deterministic engine does the rest.",
+      "tags": ["python", "langchain"],
+      "pinned": true
+    },
+    {
+      "repo": "When-Pixels-Talk-Back",
+      "displayName": "When Pixels Talk Back",
+      "tagline": "Three watermarking methods for CT scans, measured against diagnostic fidelity.",
+      "tags": ["python", "pytorch"],
+      "pinned": true
+    },
+    {
+      "repo": "Nothing-Lost-in-Translation",
+      "displayName": "Nothing Lost in Translation",
+      "tagline": "Grid Beam Search for lexically constrained English→Russian neural machine translation.",
+      "tags": ["python", "pytorch"],
+      "pinned": true
+    },
+    {
+      "repo": "EEG-Classification",
+      "displayName": "EEG Classification",
+      "tagline": "Extending prior research on classifying EEG signal recordings.",
+      "tags": ["python", "pytorch"]
+    },
+    {
+      "repo": "PM-Accelerator-Weather-Analysis",
+      "displayName": "Weather Forecast Analysis",
+      "tagline": "Exploratory analysis and forecasting over historical weather data.",
+      "tags": ["python"]
+    },
+    {
+      "repo": "PM-Accelerator-Weather-App",
+      "displayName": "Weather App",
+      "tagline": "A small full-stack weather client built as an internship assessment.",
+      "tags": ["python"]
+    },
+    {
+      "repo": "Data-Science-Project-NewSQL-code-documentation",
+      "displayName": "NewSQL Under Load",
+      "tagline": "How NewSQL systems hold up on distributed workloads — code and write-up.",
+      "tags": ["sql", "python"]
+    },
+    {
+      "repo": "blockchainVoting",
+      "displayName": "Blockchain Voting",
+      "tagline": "A tamper-evident voting flow backed by an on-chain ledger.",
+      "tags": ["nodejs", "react"]
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
+const navLinks = [
+  { href: "#about", label: "About" },
+  { href: "#skills", label: "Skills" },
+  { href: "#projects", label: "Projects" },
+  { href: "#contact", label: "Contact" },
+];
+
+/**
+ * Highlights the nav link for whichever section is currently on screen.
+ * Uses a band across the upper-middle of the viewport as the trigger line, so
+ * the highlight flips when a section genuinely takes over the view.
+ */
+function useActiveSection(ids: string[]) {
+  const [active, setActive] = useState<string | null>(null);
+
+  useEffect(() => {
+    const elements = ids
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+    if (elements.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const onScreen = entries.filter((e) => e.isIntersecting);
+        if (onScreen.length === 0) return;
+        // Topmost visible section wins when two straddle the band.
+        const top = onScreen.reduce((a, b) =>
+          a.boundingClientRect.top <= b.boundingClientRect.top ? a : b,
+        );
+        setActive(top.target.id);
+      },
+      { rootMargin: "-20% 0px -70% 0px" },
+    );
+
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, [ids]);
+
+  return active;
+}
+
+const SECTION_IDS = ["about", "skills", "projects", "contact"];
+
+export function Nav() {
+  const active = useActiveSection(SECTION_IDS);
+
+  return (
+    <nav className="sticky top-0 z-50 w-full border-b border-foreground/10 bg-background/70 backdrop-blur">
+      <div className="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
+        <a href="#top" className="font-semibold tracking-tight">
+          <span className="sm:hidden">AS</span>
+          <span className="hidden sm:inline">Anupreet Singh</span>
+        </a>
+        <ul className="flex items-center gap-4 text-xs sm:gap-6 sm:text-sm">
+          {navLinks.map((link) => {
+            const isActive = active === link.href.slice(1);
+            return (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  aria-current={isActive ? "true" : undefined}
+                  className={`transition-colors ${
+                    isActive
+                      ? "text-accent"
+                      : "text-foreground/70 hover:text-foreground"
+                  }`}
+                >
+                  {link.label}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </nav>
+  );
+}

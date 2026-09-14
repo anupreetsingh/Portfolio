@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio — Anupreet Singh
 
-## Getting Started
+Personal portfolio built with Next.js (App Router), TypeScript and Tailwind CSS,
+deployed on Vercel.
 
-First, run the development server:
+## Running locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+`predev` runs the project fetch script first, so the site has data on the very
+first run. Open <http://localhost:3000>.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## How project data works
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Projects are **curated, not auto-listed**.
 
-## Learn More
+1. [`projects.config.json`](projects.config.json) is the source of truth — an
+   allowlist of GitHub repo slugs plus optional overrides (`displayName`,
+   `tagline`, `demoUrl`, `tags`, `pinned`).
+2. [`scripts/fetch-projects.mjs`](scripts/fetch-projects.mjs) calls the GitHub
+   API for each entry and merges the live metadata (description, language,
+   stars, `pushed_at`, topics) with the overrides — **overrides win**.
+3. It writes `src/data/projects.generated.json`, a gitignored build artifact.
+4. [`src/data/projects.ts`](src/data/projects.ts) types that artifact and is
+   what the components import.
 
-To learn more about Next.js, take a look at the following resources:
+The script runs as `prebuild` and `predev`. It never fails the build: if the
+GitHub API is unreachable or rate-limited, it falls back to the config values
+alone so the site still renders.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Adding a project
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Push the repo to GitHub, add its slug to `projects.config.json`, push. Vercel
+redeploys automatically.
 
-## Deploy on Vercel
+`tags` must be skill ids from [`src/data/skills.ts`](src/data/skills.ts) — they
+drive the filter chips. The fetch script warns on any tag that isn't a real id.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Environment variables
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Set these in the Vercel dashboard; locally use a gitignored `.env.local`.
+
+| Variable | Required | Purpose |
+| --- | --- | --- |
+| `GITHUB_TOKEN` | No | Raises the GitHub API limit from 60 to 5,000 req/hr. Without it the build still works. |
+| `CRON_SECRET` | No | Vercel sends it to `/api/refresh` as a bearer token. |
+| `DEPLOY_HOOK_URL` | No | Vercel Deploy Hook that `/api/refresh` pings. |
+
+## Daily refresh
+
+Project metadata is baked in at build time, so refreshing it means redeploying.
+[`vercel.json`](vercel.json) schedules a daily cron that hits `/api/refresh`,
+which POSTs to the deploy hook. Create the hook in **Settings → Git → Deploy
+Hooks** and set `DEPLOY_HOOK_URL`.
+
+## Deploy
+
+Vercel's Git integration handles CI/CD — every push to `main` builds and
+deploys. No GitHub Actions.
