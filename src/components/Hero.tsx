@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useState, useSyncExternalStore } from "react";
-import { ParticleField } from "@/components/ParticleField";
+import { NetworkGraph } from "@/components/NetworkGraph";
 
 const ROLES = [
   "AI & LLM Engineer",
   "Full-Stack Developer",
   "RAG & Agent Builder",
-  "CS Master's @ UMBC",
+  "MS in CS · UMBC",
 ];
 
 const TYPE_MS = 65;
@@ -92,7 +92,7 @@ export function Hero() {
       id="top"
       className="relative isolate flex min-h-[82vh] w-full items-center overflow-hidden"
     >
-      <ParticleField />
+      <NetworkGraph />
       {/* Softens the field behind the text so the copy always wins. */}
       <div
         aria-hidden="true"

@@ -15,8 +15,15 @@ const mono = Space_Mono({
   weight: ["400", "700"],
 });
 
+// Vercel injects VERCEL_PROJECT_PRODUCTION_URL (host only, no protocol) at
+// build time, so Open Graph and canonical URLs stay correct even if the project
+// is renamed. The literal is only a local-dev fallback.
+const SITE_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+  : "https://portfolio-omega-three-hw8q4rw3hx.vercel.app";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://anupreetsingh.vercel.app"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Anupreet Singh — Portfolio",
     template: "%s — Anupreet Singh",

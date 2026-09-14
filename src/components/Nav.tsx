@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 
 const navLinks = [
   { href: "#about", label: "About" },
+  { href: "#experience", label: "Experience" },
+  { href: "#education", label: "Education" },
   { href: "#skills", label: "Skills" },
   { href: "#projects", label: "Projects" },
   { href: "#contact", label: "Contact" },
@@ -43,7 +45,14 @@ function useActiveSection(ids: string[]) {
   return active;
 }
 
-const SECTION_IDS = ["about", "skills", "projects", "contact"];
+const SECTION_IDS = [
+  "about",
+  "experience",
+  "education",
+  "skills",
+  "projects",
+  "contact",
+];
 
 export function Nav() {
   const active = useActiveSection(SECTION_IDS);
@@ -55,11 +64,11 @@ export function Nav() {
           <span className="sm:hidden">AS</span>
           <span className="hidden sm:inline">Anupreet Singh</span>
         </a>
-        <ul className="flex items-center gap-4 text-xs sm:gap-6 sm:text-sm">
+        <ul className="no-scrollbar -mr-6 flex min-w-0 items-center gap-4 overflow-x-auto pr-6 text-xs sm:mr-0 sm:gap-6 sm:overflow-visible sm:pr-0 sm:text-sm">
           {navLinks.map((link) => {
             const isActive = active === link.href.slice(1);
             return (
-              <li key={link.href}>
+              <li key={link.href} className="shrink-0">
                 <a
                   href={link.href}
                   aria-current={isActive ? "true" : undefined}
