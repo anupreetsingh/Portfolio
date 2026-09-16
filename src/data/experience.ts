@@ -102,7 +102,8 @@ export const experience: Experience[] = [
     kind: "academic",
     highlights: [
       "Developed 200+ unit tests for the DSA projects on linked lists, self-balancing trees, heaps, and hash tables, automating logic checking and reducing grading time by 80%.",
-      "Helped 50+ students design and debug these C++ projects implementing, helped them with understanding core conceptual concepts, and graded their homework.",
+      "Helped 50+ students design and debug C++ projects implementing core data structures, and graded their homework..",
+      "Held office hours to clarify technical concepts and translate assignment and project requirements into actionable implementation steps."
     ],
   },
   {

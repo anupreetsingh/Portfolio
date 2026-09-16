@@ -1,14 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { SocialMenu } from "@/components/SocialMenu";
 
 const navLinks = [
-  { href: "#about", label: "About" },
   { href: "#experience", label: "Experience" },
   { href: "#education", label: "Education" },
   { href: "#skills", label: "Skills" },
   { href: "#projects", label: "Projects" },
-  { href: "#contact", label: "Contact" },
 ];
 
 /**
@@ -46,12 +45,10 @@ function useActiveSection(ids: string[]) {
 }
 
 const SECTION_IDS = [
-  "about",
   "experience",
   "education",
   "skills",
   "projects",
-  "contact",
 ];
 
 export function Nav() {
@@ -64,26 +61,29 @@ export function Nav() {
           <span className="sm:hidden">AS</span>
           <span className="hidden sm:inline">Anupreet Singh</span>
         </a>
-        <ul className="no-scrollbar -mr-6 flex min-w-0 items-center gap-4 overflow-x-auto pr-6 text-xs sm:mr-0 sm:gap-6 sm:overflow-visible sm:pr-0 sm:text-sm">
-          {navLinks.map((link) => {
-            const isActive = active === link.href.slice(1);
-            return (
-              <li key={link.href} className="shrink-0">
-                <a
-                  href={link.href}
-                  aria-current={isActive ? "true" : undefined}
-                  className={`transition-colors ${
-                    isActive
-                      ? "text-accent"
-                      : "text-foreground/70 hover:text-foreground"
-                  }`}
-                >
-                  {link.label}
-                </a>
-              </li>
-            );
-          })}
-        </ul>
+        <div className="flex min-w-0 items-center gap-4 text-xs sm:gap-6 sm:text-sm">
+          <ul className="no-scrollbar flex min-w-0 items-center gap-4 overflow-x-auto sm:gap-6 sm:overflow-visible">
+            {navLinks.map((link) => {
+              const isActive = active === link.href.slice(1);
+              return (
+                <li key={link.href} className="shrink-0">
+                  <a
+                    href={link.href}
+                    aria-current={isActive ? "true" : undefined}
+                    className={`transition-colors ${
+                      isActive
+                        ? "text-accent"
+                        : "text-foreground/70 hover:text-foreground"
+                    }`}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+          <SocialMenu />
+        </div>
       </div>
     </nav>
   );

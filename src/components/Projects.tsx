@@ -92,16 +92,18 @@ export function Projects() {
               )}
             </div>
 
-            <div className="mt-4 flex gap-4 text-sm">
-              <a
-                href={project.repoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-foreground/80 underline-offset-4 hover:text-accent hover:underline"
-              >
-                Code ↗
-              </a>
-              {project.demoUrl && (
+            {/* Only worth showing as a pair. With no demo, "Code" would be a
+                second link to wherever the card title already points. */}
+            {project.demoUrl && (
+              <div className="mt-4 flex gap-4 text-sm">
+                <a
+                  href={project.repoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground/80 underline-offset-4 hover:text-accent hover:underline"
+                >
+                  Code ↗
+                </a>
                 <a
                   href={project.demoUrl}
                   target="_blank"
@@ -110,8 +112,8 @@ export function Projects() {
                 >
                   Demo ↗
                 </a>
-              )}
-            </div>
+              </div>
+            )}
           </li>
         ))}
       </ul>

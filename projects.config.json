@@ -23,22 +23,16 @@
       "pinned": true
     },
     {
+      "repo": "Rendering-pipelines",
+      "displayName": "Rendering Pipelines",
+      "tagline": "A ray tracer, a software rasterizer, and a real-time OpenGL renderer — the same scene down three paths, written in C++ from first principles.",
+      "tags": ["cpp"]
+    },
+    {
       "repo": "EEG-Classification",
       "displayName": "EEG Classification",
       "tagline": "Extending prior research on classifying EEG signal recordings.",
       "tags": ["python", "pytorch"]
-    },
-    {
-      "repo": "PM-Accelerator-Weather-Analysis",
-      "displayName": "Weather Forecast Analysis",
-      "tagline": "Exploratory analysis and forecasting over historical weather data.",
-      "tags": ["python"]
-    },
-    {
-      "repo": "PM-Accelerator-Weather-App",
-      "displayName": "Weather App",
-      "tagline": "A small full-stack weather client built as an internship assessment.",
-      "tags": ["python"]
     },
     {
       "repo": "Data-Science-Project-NewSQL-code-documentation",

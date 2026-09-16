@@ -4,10 +4,9 @@ import { useEffect, useState, useSyncExternalStore } from "react";
 import { NetworkGraph } from "@/components/NetworkGraph";
 
 const ROLES = [
-  "AI & LLM Engineer",
-  "Full-Stack Developer",
-  "RAG & Agent Builder",
-  "MS in CS · UMBC",
+  "GenAI Engineer",
+  "Full-Stack & DevOps Engineer",
+  "Systems Programmer",
 ];
 
 const TYPE_MS = 65;
@@ -114,32 +113,19 @@ export function Hero() {
           />
         </p>
 
-        <p className="mt-6 max-w-2xl text-lg leading-8 text-foreground/70">
-          I build AI-driven systems and the full-stack apps that put them in
-          front of people.
-        </p>
-
-        <div className="mt-10 flex flex-wrap items-center gap-3">
-          <a
-            href="#projects"
-            className="rounded-md bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-85"
-          >
-            View projects
-          </a>
-          <a
-            href="#about"
-            className="rounded-md border border-foreground/20 px-5 py-2.5 text-sm font-medium transition-colors hover:border-foreground/50"
-          >
-            About me
-          </a>
-          <a
-            href="https://github.com/anupreetsingh"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-md border border-foreground/20 px-5 py-2.5 text-sm font-medium transition-colors hover:border-foreground/50"
-          >
-            GitHub ↗
-          </a>
+        <div className="mt-8 flex max-w-2xl flex-col gap-4 leading-8 text-foreground/80">
+          <p>
+            I&apos;m a software engineer who spends half his time building systems
+            that generate value. Lately that has mostly meant integrating some sort
+            of GenAI capability into applications for improved functionality or speed.
+          </p>
+          <p>
+            The other half is spent peeling away layers of abstraction to see how
+            things work, until I reach a point of familiarity. That could involve
+            taking up research on emotion analysis in text-to-speech models, building
+            projects to understand computer graphics pipelines at a low level, or
+            learning about new approaches to building distributed systems.
+          </p>
         </div>
       </div>
     </section>
