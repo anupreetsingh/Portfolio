@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { ExternalArrow } from "@/components/ui";
 import { socialLinks } from "@/data/social";
 
 /**
@@ -80,10 +81,7 @@ export function SocialMenu() {
                 className="block px-3 py-2 text-sm text-foreground/80 transition-colors hover:bg-surface hover:text-foreground"
               >
                 {link.label}
-                <span aria-hidden="true" className="text-foreground/40">
-                  {" "}
-                  ↗
-                </span>
+                <ExternalArrow className="text-foreground/40" />
               </a>
             </li>
           ))}

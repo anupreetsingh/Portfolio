@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { SocialMenu } from "@/components/SocialMenu";
+import { ExternalArrow } from "@/components/ui";
 import { resumeUrl } from "@/data/social";
 import resumeMeta from "@/data/resume.generated.json";
 
@@ -102,7 +103,7 @@ export function Nav() {
             className="shrink-0 text-foreground/70 transition-colors hover:text-foreground"
           >
             Resume
-            <span aria-hidden="true" className="text-foreground/40"> ↗</span>
+            <ExternalArrow className="text-foreground/40" />
           </a>
           <SocialMenu />
         </div>

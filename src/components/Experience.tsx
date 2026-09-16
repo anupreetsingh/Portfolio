@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Section } from "@/components/Section";
-import { Badge, Timeline, TimelineItem, TimelineMeta } from "@/components/ui";
+import { Badge, ExternalArrow, Timeline, TimelineItem, TimelineMeta } from "@/components/ui";
 import { experience, experienceKindLabels } from "@/data/experience";
 
 function Chevron({ open }: { open: boolean }) {
@@ -79,7 +79,8 @@ export function Experience() {
                     rel="noopener noreferrer"
                     className="underline decoration-foreground/25 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
                   >
-                    {role.org} ↗
+                    {role.org}
+                    <ExternalArrow />
                   </a>
                 ) : (
                   role.org

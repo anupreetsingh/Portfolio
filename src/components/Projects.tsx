@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { Section } from "@/components/Section";
+import { ExternalArrow } from "@/components/ui";
 import { projects } from "@/data/projects";
 import { skills, type SkillId } from "@/data/skills";
 
@@ -107,7 +108,8 @@ export function Projects() {
                     rel="noopener noreferrer"
                     className="text-foreground/80 underline-offset-4 hover:text-accent hover:underline"
                   >
-                    {link.label} ↗
+                    {link.label}
+                    <ExternalArrow />
                   </a>
                 ))}
               </div>

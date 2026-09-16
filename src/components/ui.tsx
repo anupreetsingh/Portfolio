@@ -98,3 +98,29 @@ export function TimelineMeta({
     </p>
   );
 }
+
+/**
+ * The outbound-link arrow.
+ *
+ * Deliberately an SVG rather than the "↗" character (U+2197): iOS picks the
+ * *emoji* presentation for that codepoint and renders a blue rounded box,
+ * while desktop browsers pick the text glyph. Drawing it ourselves makes it
+ * identical everywhere and lets it inherit weight and colour from the type.
+ */
+export function ExternalArrow({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 10 10"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.25"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={`ml-0.5 inline-block h-[0.8em] w-[0.8em] shrink-0 ${className}`}
+    >
+      <path d="M2.75 7.25 7.25 2.75" />
+      <path d="M3.75 2.75h3.5v3.5" />
+    </svg>
+  );
+}
