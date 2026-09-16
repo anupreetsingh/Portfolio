@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "fetch:projects": "node scripts/fetch-projects.mjs",
-    "predev": "npm run fetch:projects",
+    "fetch:resume": "node scripts/fetch-resume.mjs",
+    "fetch:data": "npm run fetch:projects && npm run fetch:resume",
+    "predev": "npm run fetch:data",
     "dev": "next dev",
-    "prebuild": "npm run fetch:projects",
+    "prebuild": "npm run fetch:data",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"

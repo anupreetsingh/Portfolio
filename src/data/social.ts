@@ -21,3 +21,14 @@ export const socialLinks: SocialLink[] = [
   },
   { label: "GitHub", href: "https://github.com/anupreetsingh" },
 ];
+
+/**
+ * Public resume, kept in its own repo so this one carries nothing personal.
+ *
+ * Deliberately the GitHub blob URL rather than raw.githubusercontent: raw
+ * serves PDFs as application/octet-stream, which makes browsers download the
+ * file instead of showing it. The blob page renders it inline and offers its
+ * own download button, so one link covers both view and download.
+ */
+export const resumeUrl =
+  "https://github.com/anupreetsingh/Public-Resume/blob/main/Anupreet%20Resume.pdf";

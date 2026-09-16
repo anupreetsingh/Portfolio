@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Section } from "@/components/Section";
+import { Badge, Timeline, TimelineItem, TimelineMeta } from "@/components/ui";
 import { experience, experienceKindLabels } from "@/data/experience";
 
 function Chevron({ open }: { open: boolean }) {
@@ -40,21 +41,13 @@ export function Experience() {
       {/* Single reverse-chronological timeline rather than the resume's
           industry/academic split — the `kind` badge keeps the distinction
           visible without breaking the chronology. */}
-      <ol className="relative border-l border-foreground/15 pl-6 sm:pl-8">
+      <Timeline>
         {experience.map((role) => {
           const open = openIds.has(role.id);
           const panelId = `experience-${role.id}`;
 
           return (
-            <li key={role.id} className="pb-8 last:pb-0">
-              {/* Timeline marker, centred on the rule. */}
-              <span
-                aria-hidden="true"
-                className={`absolute -left-[5px] mt-2.5 h-[9px] w-[9px] rounded-full ring-4 ring-background transition-colors ${
-                  open ? "bg-accent" : "bg-foreground/30"
-                }`}
-              />
-
+            <TimelineItem key={role.id} active={open}>
               <button
                 type="button"
                 onClick={() => toggle(role.id)}
@@ -66,9 +59,7 @@ export function Experience() {
                   <span className="text-lg font-semibold tracking-tight transition-colors group-hover:text-accent">
                     {role.role}
                   </span>
-                  <span className="rounded-full bg-surface px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-foreground/60 ring-1 ring-foreground/10">
-                    {experienceKindLabels[role.kind]}
-                  </span>
+                  <Badge>{experienceKindLabels[role.kind]}</Badge>
                 </span>
                 <span className="ml-auto flex items-center gap-2">
                   <span className="hidden font-mono text-[10px] uppercase tracking-widest text-foreground/40 group-hover:text-accent sm:inline">
@@ -95,9 +86,7 @@ export function Experience() {
                 )}
               </p>
 
-              <p className="mt-1 font-mono text-xs text-foreground/50">
-                {role.period} · {role.location}
-              </p>
+              <TimelineMeta period={role.period} location={role.location} />
 
               {open && (
                 <ul id={panelId} className="animate-reveal mt-4 flex flex-col gap-2">
@@ -111,10 +100,10 @@ export function Experience() {
                   ))}
                 </ul>
               )}
-            </li>
+            </TimelineItem>
           );
         })}
-      </ol>
+      </Timeline>
     </Section>
   );
 }

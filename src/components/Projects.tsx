@@ -96,22 +96,20 @@ export function Projects() {
                 second link to wherever the card title already points. */}
             {project.demoUrl && (
               <div className="mt-4 flex gap-4 text-sm">
-                <a
-                  href={project.repoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-foreground/80 underline-offset-4 hover:text-accent hover:underline"
-                >
-                  Code ↗
-                </a>
-                <a
-                  href={project.demoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-foreground/80 underline-offset-4 hover:text-accent hover:underline"
-                >
-                  Demo ↗
-                </a>
+                {[
+                  { label: "Code", href: project.repoUrl },
+                  { label: "Demo", href: project.demoUrl },
+                ].map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-foreground/80 underline-offset-4 hover:text-accent hover:underline"
+                  >
+                    {link.label} ↗
+                  </a>
+                ))}
               </div>
             )}
           </li>

@@ -1,4 +1,5 @@
 import { Section } from "@/components/Section";
+import { Chip } from "@/components/ui";
 import { skills, type SkillCategoryName } from "@/data/skills";
 
 // Fixed display order; anything in skills.ts under a new category would be
@@ -23,14 +24,7 @@ export function Skills() {
             <dd className="mt-3 flex flex-wrap gap-2">
               {skills
                 .filter((skill) => skill.category === category)
-                .map((skill) => (
-                  <span
-                    key={skill.id}
-                    className="rounded-md bg-surface px-2.5 py-1 text-sm text-foreground/80 ring-1 ring-foreground/10"
-                  >
-                    {skill.label}
-                  </span>
-                ))}
+                .map((skill) => <Chip key={skill.id}>{skill.label}</Chip>)}
             </dd>
           </div>
         ))}

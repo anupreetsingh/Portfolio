@@ -2,6 +2,17 @@
 
 import { useEffect, useState } from "react";
 import { SocialMenu } from "@/components/SocialMenu";
+import { resumeUrl } from "@/data/social";
+import resumeMeta from "@/data/resume.generated.json";
+
+/**
+ * The PDF is fetched into public/ at build time, so this is same-origin —
+ * which is what makes the browser open it in its own viewer (with a download
+ * button) instead of saving it. If that fetch failed, fall back to GitHub.
+ */
+const resumeHref = resumeMeta.available
+  ? "/Anupreet-Singh-Resume.pdf"
+  : resumeUrl;
 
 const navLinks = [
   { href: "#experience", label: "Experience" },
@@ -82,6 +93,17 @@ export function Nav() {
               );
             })}
           </ul>
+          {/* Outbound, so it sits outside navLinks — that list drives the
+              in-page scroll-spy. */}
+          <a
+            href={resumeHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 text-foreground/70 transition-colors hover:text-foreground"
+          >
+            Resume
+            <span aria-hidden="true" className="text-foreground/40"> ↗</span>
+          </a>
           <SocialMenu />
         </div>
       </div>
