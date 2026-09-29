@@ -23,6 +23,12 @@
       "pinned": true
     },
     {
+      "repo": "Role-Radar",
+      "displayName": "Role Radar",
+      "tagline": "Real Time Job Posting Alerts system",
+      "tags": ["python", "aws", "dynamodb", "pytest"]
+    },
+    {
       "repo": "Rendering-pipelines",
       "displayName": "Rendering Pipelines",
       "tagline": "A ray tracer, a software rasterizer, and a real-time OpenGL renderer — the same scene down three paths, written in C++ from first principles.",
