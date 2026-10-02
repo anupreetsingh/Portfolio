@@ -7,6 +7,7 @@ export const skills = [
   { id: "typescript", label: "TypeScript", category: "Languages" },
   { id: "java", label: "Java", category: "Languages" },
   { id: "cpp", label: "C/C++", category: "Languages" },
+  { id: "swift", label: "Swift", category: "Languages" },
   { id: "sql", label: "SQL", category: "Languages" },
 
   // AI / ML
