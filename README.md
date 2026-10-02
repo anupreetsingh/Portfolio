@@ -33,12 +33,14 @@ Projects are **curated, not auto-listed**.
 
 1. [`projects.config.json`](projects.config.json) is the source of truth — an
    allowlist of GitHub repo slugs plus optional overrides (`displayName`,
-   `tagline`, `demoUrl`, `tags`, `pinned`).
+   `tagline`, `demoUrl`, `tags`). A project with a demo link — `demoUrl` or
+   the repo's GitHub homepage — gets the Featured label.
 2. [`scripts/fetch-projects.mjs`](scripts/fetch-projects.mjs) calls the GitHub
    API for each entry and merges the live metadata (description, language,
    stars, `pushed_at`, topics) with the overrides — **overrides win**.
-3. It writes `src/data/projects.generated.json`, sorted pinned-first then by
-   most recently pushed.
+3. It writes `src/data/projects.generated.json` in the same order as the
+   config — the order of entries in `projects.config.json` is the order on the
+   page.
 4. [`src/data/projects.ts`](src/data/projects.ts) types that artifact and is
    what the components import.
 

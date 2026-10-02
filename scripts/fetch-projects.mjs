@@ -63,7 +63,6 @@ function merge(entry, api, owner) {
     pushedAt: api?.pushed_at ?? null,
     topics: api?.topics ?? [],
     tags: entry.tags ?? [],
-    pinned: entry.pinned === true,
   };
 }
 
@@ -103,11 +102,8 @@ async function main() {
     }),
   );
 
-  // Pinned first, then most recently pushed. Repos with no pushedAt sink.
-  projects.sort((a, b) => {
-    if (a.pinned !== b.pinned) return a.pinned ? -1 : 1;
-    return (b.pushedAt ?? "").localeCompare(a.pushedAt ?? "");
-  });
+  // No sort: Promise.all keeps the config's order, and that order is the
+  // display order. Reorder projects.config.json to reorder the page.
 
   await mkdir(dirname(OUT_PATH), { recursive: true });
   await writeFile(OUT_PATH, JSON.stringify(projects, null, 2) + "\n", "utf8");

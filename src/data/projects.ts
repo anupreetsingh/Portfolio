@@ -25,7 +25,6 @@ export type Project = {
   topics: string[];
   /** Skill ids from skills.ts — drives the filter chips. */
   tags: SkillId[];
-  pinned: boolean;
 };
 
 // The JSON is a build artifact with no literal types, so we assert the shape

@@ -2,31 +2,28 @@
   "owner": "anupreetsingh",
   "projects": [
     {
-      "repo": "Bloodborne-TAG",
-      "displayName": "Bloodborne: Text Adventure",
-      "tagline": "An LLM parses your free-text into one of a fixed command set; a deterministic engine does the rest.",
-      "tags": ["python", "langchain"],
-      "pinned": true
-    },
-    {
-      "repo": "When-Pixels-Talk-Back",
-      "displayName": "When Pixels Talk Back",
-      "tagline": "Three watermarking methods for CT scans, measured against diagnostic fidelity.",
-      "tags": ["python", "pytorch"],
-      "pinned": true
+      "repo": "Role-Radar",
+      "displayName": "Role Radar",
+      "tagline": "A sovereign and autonomous app for keeping track of latest job opportunities and sending alerts",
+      "tags": ["python", "swift", "aws", "dynamodb", "pytest"]
     },
     {
       "repo": "Nothing-Lost-in-Translation",
       "displayName": "Nothing Lost in Translation",
       "tagline": "Grid Beam Search for lexically constrained English→Russian neural machine translation.",
-      "tags": ["python", "pytorch"],
-      "pinned": true
+      "tags": ["python", "pytorch"]
     },
     {
-      "repo": "Role-Radar",
-      "displayName": "Role Radar",
-      "tagline": "A sovereign and autonomous app for keeping track of latest job opportunities and sending alerts",
-      "tags": ["python", "swift", "aws", "dynamodb", "pytest"]
+      "repo": "Bloodborne-TAG",
+      "displayName": "Bloodborne: Text Adventure",
+      "tagline": "An LLM parses your free-text into one of a fixed command set; a deterministic engine does the rest.",
+      "tags": ["python", "langchain"]
+    },
+    {
+      "repo": "When-Pixels-Talk-Back",
+      "displayName": "When Pixels Talk Back",
+      "tagline": "Three watermarking methods for CT scans, measured against diagnostic fidelity.",
+      "tags": ["python", "pytorch"]
     },
     {
       "repo": "Rendering-pipelines",

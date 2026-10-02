@@ -74,7 +74,8 @@ export function Projects() {
                   {project.name}
                 </a>
               </h3>
-              {project.pinned && (
+              {/* Featured means "has something to try" — same test as the Demo link below. */}
+              {project.demoUrl && (
                 <span className="shrink-0 rounded font-mono text-[10px] uppercase tracking-widest text-accent">
                   Featured
                 </span>
